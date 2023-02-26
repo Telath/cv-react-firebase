@@ -1,0 +1,32 @@
+section#technologies{
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 100px auto 0;
+    h2{
+        margin-bottom: 2rem;
+        span.title{
+            color: $color-2;
+        }
+    }
+    .technologies{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 2rem;
+            li{
+                svg{
+                    width: 100px;
+                    height: 10  0px;
+                    fill: $color-3;
+                    transition: all 0.5s ease-in-out;
+
+                    &:hover{
+                        fill: $color-1;
+                        transition: all 0.5s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
