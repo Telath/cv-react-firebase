@@ -64,20 +64,6 @@ section.header{
 
             }
 
-            &:hover span svg{
-                fill: $color-1;
-                transition: all 0.5s ease-out;
-            }
-
-            span{
-                svg{
-                    fill: $white;
-                    width: 20px;
-                    height: 20px;
-                    transition: all 0.5s ease-out;
-                }
-            }
-
         }
     }
     .imgContent{
