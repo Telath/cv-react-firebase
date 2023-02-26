@@ -1,24 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-// const Navigation = () => {
-//     return (
-//         <header>
-//             <div class="logoDiv">
-//                 Clément <span class="name">POUILLART</span>
-//             </div>
-
-//             <nav>
-//                 <ul>
-//                     <li><NavLink exact="true" to="/">Accueil</NavLink></li>
-//                     <li><a href="/#technologies">Technologies</a></li>
-//                     <li><a href="/#mes-projets">Mes projets</a></li>
-//                     <li><NavLink exact="true" to="/contact">Contact</NavLink></li>
-//                 </ul>
-//             </nav>
-//         </header>
-//     );
-// };
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 

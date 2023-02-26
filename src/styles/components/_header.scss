@@ -15,6 +15,9 @@ section.header{
 
     .textContent{
         width: 50%;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+        }
         h1.title{
             font-weight: 800;
             margin-bottom: 2rem;
