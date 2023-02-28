@@ -6,6 +6,7 @@ import Projects from '../components/Projects';
 import Technologies from '../components/Technologies';
 
 const Home = () => {
+
     return (
         <>
             <Navigation />

@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import AuthGoogle from './pages/AuthGoogle';
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path='/' exact element={ <Home /> } />
           <Route path='/contact' exact element={ <Contact /> } /> 
+          <Route path='/login' exact element={ <AuthGoogle /> } />
           <Route path='*' element={ <NotFound /> } /> 
         </Routes>
       </BrowserRouter>

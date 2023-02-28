@@ -62,18 +62,19 @@ header{
         }
     }
     .nav-btn {
-        display: flex;
+        display: none;
         padding: 5px;
         cursor: pointer;
         background: $bg;
         border: none;
         outline: none;
-        color: $color-1;
+        color: $color-2;
         visibility: hidden;
         opacity: 0;
         font-size: 1.8rem;
 
         @media only screen and (max-width: 1024px) {
+            display: flex;
             visibility: visible;
             opacity: 1;
         }
