@@ -69,7 +69,7 @@ section.header{
     .imgContent{
         width: 50%;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         
         @media screen and (max-width: 1024px) {

@@ -11,7 +11,6 @@ const showNavbar = () => {
 };
 
 const navLinks = document.querySelectorAll('.responsive_nav a');
-console.log(navLinks)
 
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
@@ -22,8 +21,8 @@ navLinks.forEach(link => {
   
     return (
       <header>
-        <div class="logoDiv">
-            Clément <span class="name">POUILLART</span>
+        <div className="logoDiv">
+            Clément <span className="name">POUILLART</span>
         </div>
         <nav ref={navRef}>
             <ul>
@@ -31,6 +30,7 @@ navLinks.forEach(link => {
                 <li><a href="/#technologies">Technologies</a></li>
                 <li><a href="/#mes-projets">Mes projets</a></li>
                 <li><NavLink exact="true" to="/contact">Contact</NavLink></li>
+                <li><NavLink exact="true" to="/login">Login</NavLink></li>
             </ul>
             <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />

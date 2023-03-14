@@ -1,61 +1,89 @@
-import React from 'react'
-import firebase from 'firebase/compat/app';
-import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
-import Navigation from '../components/Navigation';
+// Import FirebaseAuth and firebase.
+import React, { useEffect, useState } from "react";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import Navigation from "../components/Navigation";
 
-const AuthGoogle = () => {
+// Configure Firebase.
+const config = {
+  apiKey: "AIzaSyAHeF66TrE2EPTpPcGJjfQhExVodvWK16U",
+  authDomain: "cp-project-2023.firebaseapp.com",
+  projectId: "cp-project-2023",
+  storageBucket: "cp-project-2023.appspot.com",
+  messagingSenderId: "558905493631",
+  appId: "1:558905493631:web:3a2df19452f0c20ca2174a",
+  measurementId: "G-LKY08VTTEM"
+};
+firebase.initializeApp(config);
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyAHeF66TrE2EPTpPcGJjfQhExVodvWK16U",
-        authDomain: "cp-project-2023.firebaseapp.com",
-        projectId: "cp-project-2023",
-        storageBucket: "cp-project-2023.appspot.com",
-        messagingSenderId: "558905493631",
-        appId: "1:558905493631:web:3a2df19452f0c20ca2174a",
-        measurementId: "G-LKY08VTTEM"
-      };
+// Configure FirebaseUI.
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: "popup",
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
+};
 
-    firebase.initializeApp(firebaseConfig);
+function SignInScreen() {
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
 
-    var uiConfig = {
-        signInSuccessUrl: '/test',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.GithubAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        ],
-        // tosUrl and privacyPolicyUrl accept either url string or a callback
-        // function.
-        // Terms of service url/callback.
-        tosUrl: '/',
-        // Privacy policy url/callback.
-        privacyPolicyUrl: function() {
-          window.location.assign('/');
-        }
-      };
+  // Listen to the Firebase Auth state and set the local state.
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+      });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
 
-      // Initialize the FirebaseUI Widget using Firebase.
-    //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            console.log("User :", user, "/////////////////////////")
-        }else{
-            console.log("User non connecté")
-        }
-    })
+  if (!isSignedIn) {
+    return (
+      <>
+    <Navigation />
+      <div className="AuthGoogleContainer">
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </div>
+      </>
+    );
+  }
 
   return (
     <>
-        <Navigation />
-        <div id="firebaseui-auth-container"></div>
+    <Navigation />
+    <div className="AuthGoogleContainer">
+      <div className="Profile">
+        {firebase.auth().currentUser.photoURL ? (
+          <img
+            alt="profile picture"
+            src={firebase.auth().currentUser.photoURL}
+          />
+        ) : null}
+        <h2>Bienvenue {firebase.auth().currentUser.displayName}!</h2>
+      </div>
+
+      <p>
+        Vous êtes connecté avec l'adresse mail :{" "}
+        {firebase.auth().currentUser.email}
+      </p>
+      <div className="btn_link_logout">
+        <a onClick={() => firebase.auth().signOut()}>Se déconnecter</a>
+      </div>
+    </div>
     </>
-  )
+  );
 }
 
-export default AuthGoogle
+export default SignInScreen;

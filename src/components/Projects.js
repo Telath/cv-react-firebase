@@ -1,43 +1,38 @@
-import React from 'react';
+import { React, useEffect, useState } from "react";
+import ProjetsDataService from "../services/projets.services";
 
 const Projects = () => {
+
+    const [projects, setProjects] = useState([]);
+    useEffect(() => {
+      getProject();
+    }, []);
+  
+    const getProject = async () => {
+      const data = await ProjetsDataService.getAllProject();
+      console.log(data.docs);
+      setProjects(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
     return (
+
         <section id="mes-projets">
-            <h2>Mes <span class="title">projets</span></h2>
+            <h2>Mes <span className="title">projets</span></h2>
             <ul>
-                <li>
-                    <div class="card">
-                        <div class="cardHeader">
-                            <img src="./animequotes.png" alt=""></img>
+
+            {projects.map((doc) => (
+                <li key={doc.id}>
+                    <div className="card">
+                        <div className="cardHeader">
+                            <img src={`./${doc.image}`} alt=""></img>
                         </div>
-                        <div class="cardContent">
-                            <h3 class="cardTitle">AnimeQuotes</h3>
-                            <a href="https://github.com/Telath/AnimeQuotes" target="_blank" rel="noreferrer">Github</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="cardHeader">
-                            <img src="./littleword.jpg" alt=""></img>
-                        </div>
-                        <div class="cardContent">
-                            <h3 class="cardTitle">Littleword</h3>
-                            <a href="https://github.com/Telath/littleworld" target="_blank" rel="noreferrer">Github</a>
+                        <div className="cardContent">
+                            <h3 className="cardTitle">{doc.title}</h3>
+                            <a href={doc.github} target="_blank" rel="noreferrer">Github</a>
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="card">
-                        <div class="cardHeader">
-                            <img src="./Ulcotheque.png" alt=""></img>
-                        </div>
-                        <div class="cardContent">
-                            <h3 class="cardTitle">Ulco'thèque</h3>
-                            <a href="https://github.com/Telath/ulcotheque" target="_blank" rel="noreferrer">Github</a>
-                        </div>
-                    </div>
-                </li>
+            ))}
             </ul>
         </section>
     );
