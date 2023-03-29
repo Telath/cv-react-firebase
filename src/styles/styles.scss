@@ -7,3 +7,18 @@
 @import './components/footer';
 @import './components/notfound';
 @import './pages/AuthGoogle.scss';
+
+.notificationDiv.active{
+    display: block;
+    position: absolute;
+    background-color: lightcyan;
+    padding: .5rem 2rem;
+    top: 5rem;
+    left:0 ;
+    z-index: 100;
+    text-align: center;
+}
+
+.notificationDiv{
+    display: none;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // Import FirebaseAuth and firebase.
 import React, { useEffect, useState } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -66,6 +67,7 @@ function SignInScreen() {
     <div className="AuthGoogleContainer">
       <div className="Profile">
         {firebase.auth().currentUser.photoURL ? (
+          // eslint-disable-next-line jsx-a11y/img-redundant-alt
           <img
             alt="profile picture"
             src={firebase.auth().currentUser.photoURL}
