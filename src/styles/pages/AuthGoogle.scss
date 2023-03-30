@@ -15,7 +15,7 @@ body{
         }
     }
     .btn_link_logout{
-        margin-top: 2rem;
+        margin: 2rem 0;
         a{
             padding: .75rem 2rem;
             background-color: $color-2;
@@ -30,6 +30,46 @@ body{
                 background-color: transparent;
                 border: 1px solid $color-2;
 
+            }
+        }
+    }
+    .formProject{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        border: 1px solid $color-2;
+        input{
+            height: 2rem;
+            border: none;
+            border-bottom: 1px solid white;
+            background-color: transparent;
+            color: white;
+            &:focus{
+                outline: none;
+            }
+
+            &::placeholder{
+                color: white;
+            }
+
+        }
+        button{
+            padding: .75rem 2rem;
+            background-color: $color-2;
+            border: 1px solid $color-2;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+            text-align: center;
+            border-radius: 10px;
+            color: white;
+
+            &:hover{
+                background-color: transparent;
+                border: 1px solid $color-2;
+                color: $color-2;
             }
         }
     }

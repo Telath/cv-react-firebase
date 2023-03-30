@@ -38,7 +38,7 @@ const AddProject = () => {
   return (
     <>
       <div className="addProject">
-        <form onSubmit={handleSubmit}>
+        <form className="formProject" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Nom du projet"
