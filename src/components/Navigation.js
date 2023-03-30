@@ -46,16 +46,17 @@ navLinks.forEach(link => {
         </div>
         <nav ref={navRef}>
             <ul>
+            {
+                  isConnected &&
+                  <li>Bienvenue {firebase.auth().currentUser.displayName} !</li>
+                }
                 <li><NavLink exact="true" to="/">Accueil</NavLink></li>
                 <li><a href="/#technologies">Technologies</a></li>
                 <li><a href="/#mes-projets">Mes projets</a></li>
                 <li><NavLink exact="true" to="/contact">Contact</NavLink></li>
                 {
                   isConnected &&
-                  <>
-                  <li>Bienvenue {firebase.auth().currentUser.displayName} !</li>
-                  <li><a onClick={() => firebase.auth().signOut()}>Se déconnecter</a></li>
-                  </>
+                  <li><NavLink exact="true" to="/profil">Profil</NavLink></li>
                 }
                 {
                   !isConnected &&

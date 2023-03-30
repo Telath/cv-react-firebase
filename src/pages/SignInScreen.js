@@ -5,6 +5,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Navigation from "../components/Navigation";
+import AddProject from "../components/AddProject";
 
 // Configure Firebase.
 const config = {
@@ -42,7 +43,7 @@ function SignInScreen() {
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged((user) => {
-        setIsSignedIn(!!user);
+        setIsSignedIn(user);
       });
     return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   }, []);
@@ -82,6 +83,9 @@ function SignInScreen() {
       </p>
       <div className="btn_link_logout">
         <a onClick={() => firebase.auth().signOut()}>Se déconnecter</a>
+      </div>
+      <div className="addProject">
+        <AddProject />
       </div>
     </div>
     </>

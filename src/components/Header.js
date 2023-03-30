@@ -9,7 +9,7 @@ const Header = () => {
                 <h1 className="title">Clément <span className="title">POUILLART</span></h1>
                 <p className="subtitle">Web développeur</p>
                 <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae lectus id nunc gravida maximus. Morbi congue urna vitae sem blandit lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus interdum enim vitae lacus aliquet, mattis dapibus eros facilisis. Sed ultrices metus eu blandit pulvinar</p>
-                <div class="btn">
+                <div className="btn">
                     {
                       firebase.auth().currentUser &&
                       /* Mettre à jour l'archive sur cloud storage */

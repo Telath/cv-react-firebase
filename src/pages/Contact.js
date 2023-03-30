@@ -6,7 +6,7 @@ const Contact = () => {
         <div>
             <Navigation />
             <section id="contact">
-                <h1>Page contact en <span class="title">maintenance</span></h1>
+                <h1>Page contact en <span className="title">maintenance</span></h1>
             </section>
         </div>
     );

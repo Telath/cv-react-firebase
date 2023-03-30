@@ -6,7 +6,7 @@ const NotFound = () => {
         <div>
             <Navigation />
             <section id="notfound">
-                <h1>ERREUR <span class="title">404</span></h1>
+                <h1>ERREUR <span className="title">404</span></h1>
             </section>
         </div>
     );

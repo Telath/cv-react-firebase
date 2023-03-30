@@ -38,7 +38,7 @@ onMessage(messaging, (payload) => {
 console.log("payload", payload)
 console.log("title : ",payload.notification.title, "body : ", payload.notification.body)
 
-document.querySelector(".notificationDiv").innerHTML = `<p class="title">${payload.notification.title}</p><p class="body">${payload.notification.body}</p>`
+document.querySelector(".notificationDiv").innerHTML = `<p className="title">${payload.notification.title}</p><p className="body">${payload.notification.body}</p>`
 document.querySelector(".notificationDiv").classList.add("active")
 setTimeout(() => {
   document.querySelector(".notificationDiv").classList.remove("active")
