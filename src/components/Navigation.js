@@ -28,7 +28,7 @@ firebase.initializeApp(config);
 
 console.log(firebase.auth())
 
-var isConnected = firebase.auth().currentUser ? 1 : 0
+var isConnected = firebase.auth().currentUser
 
 const navLinks = document.querySelectorAll('.responsive_nav a');
 
