@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useRef, useState, useEffect } from "react";
+import { useRef} from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import firebase from "firebase/compat/app";
 
@@ -29,21 +30,6 @@ console.log(firebase.auth())
 
 var isConnected = firebase.auth().currentUser ? 1 : 0
 
-// Profiltag
-
-// const [isSignedIn, setIsSignedIn] = useState(false);
-
-// useEffect(() => {
-//   const unregisterAuthObserver = firebase
-//     .auth()
-//     .onAuthStateChanged((user) => {
-//       setIsSignedIn(!!user);
-//     });
-//   return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-// }, []);
-
-
-
 const navLinks = document.querySelectorAll('.responsive_nav a');
 
 navLinks.forEach(link => {
@@ -66,7 +52,10 @@ navLinks.forEach(link => {
                 <li><NavLink exact="true" to="/contact">Contact</NavLink></li>
                 {
                   isConnected &&
+                  <>
                   <li>Bienvenue {firebase.auth().currentUser.displayName} !</li>
+                  <li><a onClick={() => firebase.auth().signOut()}>Se déconnecter</a></li>
+                  </>
                 }
                 {
                   !isConnected &&
