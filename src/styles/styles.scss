@@ -10,13 +10,22 @@
 
 .notificationDiv.active{
     display: block;
-    position: absolute;
-    background-color: lightcyan;
+    position: fixed;
+    background-color: white;
+    color: black;
     padding: .5rem 2rem;
     top: 5rem;
-    left:0 ;
+    left: 0 ;
     z-index: 100;
     text-align: center;
+}
+
+.notificationDiv.active .title{
+    font-weight: 800;
+}
+
+.notificationDiv.active .body{
+    font-style: italic;
 }
 
 .notificationDiv{
