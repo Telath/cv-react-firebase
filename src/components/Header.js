@@ -13,7 +13,7 @@ const Header = () => {
                     {
                       firebase.auth().currentUser &&
                       /* Mettre à jour l'archive sur cloud storage */
-                      <a href="https://firebasestorage.googleapis.com/v0/b/cp-project-2023.appspot.com/o/CV_CPouillart.pdf?alt=media&token=ec84413d-2dc5-4d90-b64d-adff906975b5" target="_blank" rel="noreferrer">Mon Archive</a>
+                      <a href="https://firebasestorage.googleapis.com/v0/b/cp-project-2023.appspot.com/o/cv-react-firebase-main.zip?alt=media&token=117b4af1-a62c-4d21-b21a-3c417d7b8887" target="_blank" rel="noreferrer">Mon Archive</a>
                     }
                     <a href="https://firebasestorage.googleapis.com/v0/b/cp-project-2023.appspot.com/o/CV_CPouillart.pdf?alt=media&token=ec84413d-2dc5-4d90-b64d-adff906975b5" target="_blank" rel="noreferrer">Mon CV</a>
                 </div>
